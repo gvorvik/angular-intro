@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vendors/angular.min.js"></script>
+    <script src="scripts/client.js"></script>
+    <title>Document</title>
+</head>
+<!-- anything starting with ng- is an angular directive -->
+<body ng-app="MyApp">
+    <h1>Angular Intro</h1>
+
+    {{ 7 + 7 }}
+    <!-- vm stands for view model -->
+    <div ng-controller="WelcomeController as vm">
+        <!-- Angular Two Way Binding: what changes in html will change in javascript (and vice versa) -->
+        <input ng-model="vm.message" />
+        {{ vm.message }}
+
+        <button ng-click="vm.greet(vm.message)">Greet</button>
+        <ul>
+            <li ng-repeat="person in vm.names">
+                {{ person.name }} is an instructor who says {{person.greeting}}
+                <img ng-src="https://github.com/{{person.github}}.png?size=150" alt="Instructor Image" ng-show="person.github"/>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
